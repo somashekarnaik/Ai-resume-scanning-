@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Job Matching</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a class="logo" href="index.html">
+        <img src="assets/resume-spark.svg" alt="">
+        <span>AI Resume Scanner</span>
+    </a>
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>Job Matching</h1>
+
+    <div class="form-card">
+
+        <label>
+            Enter Your Skills
+        </label>
+
+        <input
+            type="text"
+            id="userSkills"
+            placeholder="Python, SQL, Machine Learning..."
+        >
+
+
+        <button onclick="findJobs()">
+            Find Matching Jobs
+        </button>
+
+    </div>
+
+
+    <div id="jobs"></div>
+
+</div>
+
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Scanner - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <a class="logo" href="index.html">
+            <img src="assets/resume-spark.svg" alt="">
+            <span>AI Resume Scanner</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="upload-resume.html">Resume</a>
+
+            <a href="job-matching.html">Jobs</a>
+
+            <button id="themeButton">
+                🌙 Dark
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <div>
+
+            <h1>
+                Welcome to your Dashboard 👋
+            </h1>
+
+            <p>
+                Analyze your resume, discover your skills
+                and find suitable jobs using AI.
+            </p>
+
+            <a
+                href="upload-resume.html"
+                class="start-button">
+
+                Start Resume Analysis
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <main class="dashboard">
+
+        <h2>
+            Dashboard
+        </h2>
+
+        <p class="subtitle">
+            Choose an option to continue.
+        </p>
+
+
+        <!-- CARDS -->
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <h3>
+                    Resume Scanner
+                </h3>
+
+                <p>
+                    Upload your resume and get
+                    an AI-powered resume analysis.
+                </p>
+
+                <a href="upload-resume.html">
+                    Scan Resume →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Skill Detection
+                </h3>
+
+                <p>
+                    Automatically detect technical
+                    skills from your resume.
+                </p>
+
+                <a href="upload-resume.html">
+                    Detect Skills →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Job Matching
+                </h3>
+
+                <p>
+                    Find jobs that match your
+                    skills and experience.
+                </p>
+
+                <a href="job-matching.html">
+                    Find Jobs →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="statistics">
+
+            <div class="stat">
+
+                <h3>
+                    Resume Score
+                </h3>
+
+                <strong id="resumeScore">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    Skills Detected
+                </h3>
+
+                <strong id="skillsCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    Jobs Matched
+                </h3>
+
+                <strong id="jobsCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            AI Resume Scanning System © 2026
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const themeButton =
+            document.getElementById(
+                "themeButton"
+            );
+
+
+        /*
+        LOAD SAVED THEME
+        */
+
+        const savedTheme =
+            localStorage.getItem(
+                "dashboardTheme"
+            );
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add(
+                "dark"
+            );
+
+            themeButton.innerHTML =
+                "☀️ Light";
+
+        }
+
+
+        /*
+        CHANGE LIGHT / DARK MODE
+        */
+
+        themeButton.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark"
+                );
+
+
+                if (
+                    document.body.classList.contains(
+                        "dark"
+                    )
+                ) {
+
+                    localStorage.setItem(
+                        "dashboardTheme",
+                        "dark"
+                    );
+
+                    themeButton.innerHTML =
+                        "☀️ Light";
+
+                } else {
+
+                    localStorage.setItem(
+                        "dashboardTheme",
+                        "light"
+                    );
+
+                    themeButton.innerHTML =
+                        "🌙 Dark";
+
+                }
+
+            }
+        );
+
+
+        /*
+        SHOW LAST RESUME RESULT
+        */
+
+        const savedResult =
+            localStorage.getItem(
+                "resume_result"
+            );
+
+
+        if (savedResult) {
+
+            const result =
+                JSON.parse(
+                    savedResult
+                );
+
+
+            document.getElementById(
+                "resumeScore"
+            ).innerText =
+                result.overall_score + "%";
+
+
+            document.getElementById(
+                "skillsCount"
+            ).innerText =
+                result.resume_skills.length;
+
+
+            document.getElementById(
+                "jobsCount"
+            ).innerText =
+                result.matched_skills.length;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

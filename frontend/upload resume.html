@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Resume</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body data-auth-required="true">
+
+<nav class="navbar">
+
+    <a class="logo" href="index.html">
+        <img src="assets/resume-spark.svg" alt="">
+        <span>AI Resume Scanner</span>
+    </a>
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="upload-card">
+
+        <h1>Upload Resume</h1>
+
+        <p>
+            Supported formats: PDF and DOCX
+        </p>
+
+        <div class="file-upload-group">
+            <label for="resumeFile">Resume file</label>
+            <input
+                type="file"
+                id="resumeFile"
+                accept=".pdf,.docx"
+            >
+        </div>
+
+        <div class="photo-upload-group">
+            <label>Profile photo / document photo</label>
+            <div class="photo-actions">
+                <button type="button" id="cameraButton" class="secondary-btn">
+                    Use Camera
+                </button>
+                <button type="button" id="uploadPhotoButton" class="secondary-btn">
+                    Upload Photo
+                </button>
+            </div>
+
+            <input
+                type="file"
+                id="photoUpload"
+                accept="image/*"
+                capture="environment"
+                hidden
+            >
+
+            <video id="cameraPreview" autoplay playsinline muted hidden></video>
+            <canvas id="photoCanvas" hidden></canvas>
+
+            <div id="photoPreviewWrapper" class="photo-preview-wrapper" hidden>
+                <img id="photoPreview" alt="Captured or uploaded photo preview">
+            </div>
+
+            <button type="button" id="capturePhotoButton" class="secondary-btn hidden">
+                Capture Photo
+            </button>
+        </div>
+
+
+        <label for="expectedJobRole">Expected Job Role</label>
+        <select id="expectedJobRole">
+            <option value="Python Developer" selected>Python Developer</option>
+            <option value="AI/ML Engineer">AI/ML Engineer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Software Developer">Software Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Full Stack Developer">Full Stack Developer</option>
+            <option value="Financial Analyst">Financial Analyst</option>
+        </select>
+
+        <label for="jobDescription">Sample Job Description (editable)</label>
+
+        <textarea
+            id="jobDescription"
+            aria-describedby="jobDescriptionHelp"
+        >Loading sample job description...</textarea>
+        <p id="jobDescriptionHelp" class="form-help">
+            Choose a role to load its sample description, then edit it to match the job you want.
+        </p>
+
+
+        <button id="analyzeResumeButton" type="button">
+            Analyze Resume
+        </button>
+
+
+        <p id="uploadMessage"></p>
+    </div>
+
+</div>
+
+<div class="career-assistant">
+    <button
+        id="assistantToggle"
+        class="assistant-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="assistantPanel"
+    >
+        <span aria-hidden="true">✦</span> Career AI Assistant
+    </button>
+    <section id="assistantPanel" class="assistant-panel" aria-label="Career AI Assistant" hidden>
+        <header class="assistant-header">
+            <div>
+                <strong>Career AI Assistant</strong>
+                <p>Career, job-search, interview, and resume help</p>
+            </div>
+            <button id="assistantClose" class="assistant-close" type="button" aria-label="Close assistant">×</button>
+        </header>
+        <div id="assistantMessages" class="assistant-messages" aria-live="polite">
+            <p class="assistant-message assistant-reply">
+                Ask me career questions anytime. Analyze a resume first if you want advice personalized to its role match and detected skills.
+            </p>
+        </div>
+        <form id="assistantForm" class="assistant-form">
+            <label class="sr-only" for="assistantQuestion">Ask a career question</label>
+            <textarea id="assistantQuestion" rows="2" maxlength="1000" placeholder="Ask a career question..." required></textarea>
+            <button id="assistantSend" type="submit">Ask</button>
+        </form>
+        <p class="assistant-disclaimer">
+            Your question, recent chat, and detected resume analysis (if available) are sent to OpenAI to generate a reply. The original resume file is not sent. Don't share sensitive information. Career guidance is general, not a hiring guarantee.
+        </p>
+    </section>
+</div>
+
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>

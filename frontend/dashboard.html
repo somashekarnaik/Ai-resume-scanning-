@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body data-auth-required="true">
+
+<nav class="navbar">
+
+    <a class="logo" href="index.html">
+        <img src="assets/resume-spark.svg" alt="">
+        <span>AI Resume Scanner</span>
+    </a>
+
+    <div>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="upload-resume.html">
+            Upload Resume
+        </a>
+
+        <a href="job-matching.html">
+            Job Matching
+        </a>
+
+        <a href="index.html">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>Dashboard</h1>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <h2>📄 Resume Scanner</h2>
+
+            <p>
+                Upload your resume and analyze it.
+            </p>
+
+            <a
+                href="upload-resume.html"
+                class="btn"
+            >
+                Upload Resume
+            </a>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h2>🎯 Job Matching</h2>
+
+            <p>
+                Find jobs matching your skills.
+            </p>
+
+            <a
+                href="job-matching.html"
+                class="btn"
+            >
+                Find Jobs
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>
