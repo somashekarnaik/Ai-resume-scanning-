@@ -1,10 +1,6 @@
-from operator import __inv__
+"""Machine learning helpers for the resume scanner app."""
 
-from backend import App
-from backend.App import Routes, services
+from .models import predict_resume_score
+from .train import train_model
 
-
-backend/app/__init__.py # type: ignore
-backend/App/Routes/__inv__.py # type: ignore
-backend/App/services/__inv__.py # type: ignore
-backend/app/ml/__inv__.py # type: ignore
+__all__ = ["predict_resume_score", "train_model"]
